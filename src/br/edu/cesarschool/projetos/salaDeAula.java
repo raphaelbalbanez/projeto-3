@@ -1,6 +1,6 @@
 package br.edu.cesarschool.projetos;
 
-public class salaDeAula {
-	private String titulo;
-	private String codigo;
+public class SalaDeAula {
+	public String titulo;
+	public String codigo;
 }

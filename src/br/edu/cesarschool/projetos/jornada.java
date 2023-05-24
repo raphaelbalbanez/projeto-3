@@ -1,9 +1,9 @@
 package br.edu.cesarschool.projetos;
 
-public class jornada {
+public class Jornada {
     private Usuario usuario;
     private Usuario pessoa;
-    private salaDeAula salaDeAula;
+    private SalaDeAula salaDeAula;
     private Ponto pontos;
     
     public void Jornada(Usuario usuario) {
@@ -11,7 +11,7 @@ public class jornada {
         pessoa = usuario;
     }
     
-    public void salaDeAula(salaDeAula sala) {
+    public void salaDeAula(SalaDeAula sala) {
         salaDeAula = sala;
     }
     
