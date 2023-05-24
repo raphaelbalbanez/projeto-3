@@ -3,23 +3,13 @@ package br.edu.cesarschool.projetos;
 import java.util.Date;
 
 public class Comentario {
-    private Usuario autor;
-    private String texto;
-    private Date dataDePostagem;
+    public Usuario autor;
+    public String texto;
+    public Date dataDePublicacao;
     
-    public void autor(Usuario usuario) {
-        autor = usuario;
-    }
-    
-    public void dataDePostagem(Date data) {
-        dataDePostagem = data;
-    }
-    
-    public String getTexto() {
-        return texto;
-    }
-    
-    public void setTexto(String texto) {
+    public void editarComentario(String texto,Usuario autor,Date dataDePublicacao) {
         this.texto = texto;
+        this.autor= autor;
+        this.dataDePublicacao = dataDePublicacao;
     }
 }
