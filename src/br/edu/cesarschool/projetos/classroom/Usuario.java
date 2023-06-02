@@ -1,4 +1,4 @@
-package br.edu.cesarschool.projetos;
+package br.edu.cesarschool.projetos.classroom;
 
 public class Usuario {
 	public String getNome() {

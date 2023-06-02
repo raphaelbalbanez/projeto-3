@@ -1,11 +1,12 @@
-package br.edu.cesarschool.projetos;
+package br.edu.cesarschool.projetos.classroom;
 
 import java.io.File;
 import java.time.LocalDate;
-import java.util.Date;
+
+import br.edu.cesarschool.projetos.strateegia.Criador;
 
 public class Atividade {
-	public Date dataDeEntrega;
+	public LocalDate dataDeEntrega;
 	private File[] anexos ;
 	public Criador autor;
 	

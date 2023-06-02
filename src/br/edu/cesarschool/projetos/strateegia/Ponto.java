@@ -1,4 +1,4 @@
-package br.edu.cesarschool.projetos;
+package br.edu.cesarschool.projetos.strateegia;
 
 public class Ponto {
 	private String tema;

@@ -1,4 +1,7 @@
-package br.edu.cesarschool.projetos;
+package br.edu.cesarschool.projetos.strateegia;
+
+import br.edu.cesarschool.projetos.classroom.SalaDeAula;
+import br.edu.cesarschool.projetos.classroom.Usuario;
 
 public class Jornada {
     private Usuario usuario;
@@ -6,16 +9,16 @@ public class Jornada {
     private SalaDeAula salaDeAula;
     private Ponto pontos;
     
-    public void Jornada(Usuario usuario) {
+    public Jornada(Usuario usuario) {
         this.usuario = usuario;
         pessoa = usuario;
     }
     
-    public void salaDeAula(SalaDeAula sala) {
+    public void setSalaDeAula(SalaDeAula sala) {
         salaDeAula = sala;
     }
     
-    public void pontos(Ponto ponto) {
+    public void setPontos(Ponto ponto) {
         pontos = ponto;
     }
     
