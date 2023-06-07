@@ -1,4 +1,4 @@
-package telas;
+package br.edu.cesarschool.projetos.strateegia.gui;
 
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;

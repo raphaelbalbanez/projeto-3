@@ -1,4 +1,4 @@
-package telas;
+package br.edu.cesarschool.projetos.strateegia.gui;
 
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;

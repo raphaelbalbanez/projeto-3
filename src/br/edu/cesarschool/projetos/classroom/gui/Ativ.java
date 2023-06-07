@@ -1,4 +1,4 @@
-package br.edu.cesarschool.projetos.gui;
+package br.edu.cesarschool.projetos.classroom.gui;
 
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
