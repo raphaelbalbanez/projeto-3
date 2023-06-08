@@ -9,13 +9,44 @@ public class Conteudo {
 	private String descricao;
 	private LocalDateTime dataPostagem;
 	private Criador autor;
+	private SalaDeAula salaDeAula;
 	
-	public Conteudo(String descricao) {
+	public Conteudo(String descricao, SalaDeAula salaDeAula) {
 		this.descricao = descricao;
+		this.salaDeAula = salaDeAula;
 	}
 	
-	public Conteudo(String titulo, String descricao) {
-		this(descricao);
+	public Conteudo(String titulo, String descricao, SalaDeAula salaDeAula) {
+		this(descricao, salaDeAula);
 		this.titulo = titulo;
 	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public LocalDateTime getDataPostagem() {
+		return dataPostagem;
+	}
+
+	public Criador getAutor() {
+		return autor;
+	}
+	
+	public SalaDeAula getSalaDeAula() {
+		return salaDeAula;
+	}
+	
 }

@@ -10,23 +10,25 @@ public class Atividade {
 	private File[] anexos;
 	private Criador autor;
 	private Conteudo conteudo;
+	private SalaDeAula salaDeAula;
 	
-	public Atividade(LocalDateTime dataEntrega) {
+	public Atividade(LocalDateTime dataEntrega, SalaDeAula salaDeAula) {
 		this.dataEntrega = dataEntrega;
+		this.salaDeAula = salaDeAula;
 	}
 	
-	public Atividade(LocalDateTime dataEntrega, Conteudo conteudo) {
-		this(dataEntrega);
+	public Atividade(LocalDateTime dataEntrega, Conteudo conteudo, SalaDeAula salaDeAula) {
+		this(dataEntrega, salaDeAula);
 		this.conteudo = conteudo;
 	}
 	
-	public Atividade(LocalDateTime dataEntrega, File[] anexos) {
-		this(dataEntrega);
+	public Atividade(LocalDateTime dataEntrega, File[] anexos, SalaDeAula salaDeAula) {
+		this(dataEntrega, salaDeAula);
 		this.anexos = anexos;
 	}
 	
-	public Atividade(LocalDateTime dataEntrega, Conteudo conteudo, File[] anexos) {
-		this(dataEntrega, conteudo);
+	public Atividade(LocalDateTime dataEntrega, Conteudo conteudo, File[] anexos, SalaDeAula salaDeAula) {
+		this(dataEntrega, conteudo, salaDeAula);
 		this.anexos = anexos;
 	}
 
@@ -52,6 +54,9 @@ public class Atividade {
 
 	public Criador getAutor() {
 		return autor;
+	}
+	public SalaDeAula getSalaDeAula() {
+		return salaDeAula;
 	}
 	
 	public File adicionarAnexo(File anexo) {

@@ -3,7 +3,10 @@ package br.edu.cesarschool.projetos.classroom.entidades;
 import java.io.File;
 import java.time.LocalDateTime;
 
-public class SalaDeAula {
+import br.edu.cesarschool.projetos.exceptions.ExcecaoSalaNaoEncontrada;
+import br.edu.cesarschool.projetos.geral.entidades.Plataforma;
+
+public class SalaDeAula /* implements Plataforma*/ {
 	private String titulo;
 	private String codigo;
 	private String classroomURL;
@@ -27,6 +30,12 @@ public class SalaDeAula {
 	public String getClassroomURL() {
 		return classroomURL;
 	}
+	
+//	public SalaDeAula criar() {return null;}
+//	
+//	private void deletar(Plataforma plat) throws ExcecaoSalaNaoEncontrada{
+//		SalaDeAula sala = (SalaDeAula) plat;
+//	}
 	
 	public Atividade adicionarAtividade(LocalDateTime dataEntrega) {
 		return null;

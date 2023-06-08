@@ -5,7 +5,7 @@ import br.edu.cesarschool.projetos.geral.entidades.Criador;
 import br.edu.cesarschool.projetos.geral.entidades.Usuario;
 import br.edu.cesarschool.projetos.strateegia.util.TipoPonto;
 
-public class Jornada {
+public class Jornada /* implements Plataforma */ {
 	private String titulo;
 	private String descricao;
 	private Criador criador;
