@@ -10,7 +10,7 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.wb.swt.SWTResourceManager;
 import org.eclipse.swt.widgets.Button;
 
-public class tela_divergencia {
+public class DivergenciaGUI {
 
 	protected Shell shell;
 
@@ -20,7 +20,7 @@ public class tela_divergencia {
 	 */
 	public static void main(String[] args) {
 		try {
-			tela_divergencia window = new tela_divergencia();
+			DivergenciaGUI window = new DivergenciaGUI();
 			window.open();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -48,7 +48,7 @@ public class tela_divergencia {
 	protected void createContents() {
 		shell = new Shell();
 		shell.setSize(551, 363);
-		shell.setText("SWT Application");
+		shell.setText("Stratroom");
 		
 		Label lblPontosDeDivergencias = new Label(shell, SWT.NONE);
 		lblPontosDeDivergencias.setBounds(24, 20, 134, 18);
@@ -105,7 +105,7 @@ public class tela_divergencia {
 		btnCriarKitClass.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				tela_criar_kit1 kit1 = new tela_criar_kit1();
+				CriarKit1 kit1 = new CriarKit1();
 				shell.close();
 				kit1.open();
 			}

@@ -11,7 +11,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.wb.swt.SWTResourceManager;
 
-public class tela_criar_kit2 {
+public class CriarKit2 {
 
 	protected Shell shell;
 
@@ -21,7 +21,7 @@ public class tela_criar_kit2 {
 	 */
 	public static void main(String[] args) {
 		try {
-			tela_criar_kit2 window = new tela_criar_kit2();
+			CriarKit2 window = new CriarKit2();
 			window.open();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -49,7 +49,7 @@ public class tela_criar_kit2 {
 	protected void createContents() {
 		shell = new Shell();
 		shell.setSize(551, 363);
-		shell.setText("SWT Application");
+		shell.setText("Stratroom");
 		
 		Button btnVoltar = new Button(shell, SWT.NONE);
 		btnVoltar.setBounds(10, 10, 94, 27);
@@ -124,7 +124,7 @@ public class tela_criar_kit2 {
 		btnVoltar.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				tela_divergencia divergencia = new tela_divergencia();
+				DivergenciaGUI divergencia = new DivergenciaGUI();
 				shell.close();
 				divergencia.open();
 			}
@@ -134,7 +134,7 @@ public class tela_criar_kit2 {
 		    @Override
 		    public void widgetSelected(SelectionEvent e) {
 		        if (btnRadioAzul.getSelection()) {
-		            tela_criar_kit3 kit3 = new tela_criar_kit3();
+		            CriarKit3 kit3 = new CriarKit3();
 		            shell.close();
 		            kit3.open();
 		        } else {
@@ -149,7 +149,7 @@ public class tela_criar_kit2 {
 		btnSetaBaixo.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				tela_criar_kit1 kit1 = new tela_criar_kit1();
+				CriarKit1 kit1 = new CriarKit1();
 				shell.close();
 				kit1.open();
 			}

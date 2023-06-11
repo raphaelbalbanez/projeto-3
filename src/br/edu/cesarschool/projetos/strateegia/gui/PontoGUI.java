@@ -8,7 +8,7 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Button;
 
-public class tela_ponto {
+public class PontoGUI {
 
 	protected Shell shell;
 	//private Button btnPontoDeDivergencia;
@@ -19,7 +19,7 @@ public class tela_ponto {
 	 */
 	public static void main(String[] args) {
 		try {
-			tela_ponto window = new tela_ponto();
+			PontoGUI window = new PontoGUI();
 			window.open();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -47,7 +47,7 @@ public class tela_ponto {
 	protected void createContents() {
 		shell = new Shell();
 		shell.setSize(551, 363);
-		shell.setText("SWT Application");
+		shell.setText("Stratroom");
 		
 		Label lblAddPonto = new Label(shell, SWT.NONE);
 		lblAddPonto.setBounds(206, 29, 144, 14);
@@ -80,7 +80,7 @@ public class tela_ponto {
 		btnPontoDeDivergencia.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				tela_divergencia divergencia = new tela_divergencia();
+				DivergenciaGUI divergencia = new DivergenciaGUI();
 				shell.close();
 				divergencia.open();
 			}

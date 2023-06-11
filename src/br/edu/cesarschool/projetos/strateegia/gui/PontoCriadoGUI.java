@@ -6,7 +6,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
 
-public class tela_ponto_criado {
+public class PontoCriadoGUI {
 
 	protected Shell shell;
 
@@ -16,7 +16,7 @@ public class tela_ponto_criado {
 	 */
 	public static void main(String[] args) {
 		try {
-			tela_ponto_criado window = new tela_ponto_criado();
+			PontoCriadoGUI window = new PontoCriadoGUI();
 			window.open();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -44,7 +44,7 @@ public class tela_ponto_criado {
 	protected void createContents() {
 		shell = new Shell();
 		shell.setSize(551, 363);
-		shell.setText("SWT Application");
+		shell.setText("Stratroom");
 		
 		Label lblMinhasJornadas = new Label(shell, SWT.NONE);
 		lblMinhasJornadas.setText("Minhas Jornadas | Protótipo");

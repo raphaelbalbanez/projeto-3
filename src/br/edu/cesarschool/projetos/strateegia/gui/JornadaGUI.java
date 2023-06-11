@@ -8,7 +8,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 
-public class tela_jornada {
+public class JornadaGUI {
 
 	protected Shell shell;
 	//private Button btnJornada1;
@@ -19,7 +19,7 @@ public class tela_jornada {
 	 */
 	public static void main(String[] args) {
 		try {
-			tela_jornada window = new tela_jornada();
+			JornadaGUI window = new JornadaGUI();
 			window.open();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -47,7 +47,7 @@ public class tela_jornada {
 	protected void createContents() {
 		shell = new Shell();
 		shell.setSize(551, 363);
-		shell.setText("SWT Application");
+		shell.setText("Stratroom");
 		
 		Button btnPonto1 = new Button(shell, SWT.NONE);
 		btnPonto1.setBounds(48, 42, 72, 58);
@@ -95,7 +95,7 @@ public class tela_jornada {
 		btnPonto1.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				tela_ponto ponto = new tela_ponto();
+				PontoGUI ponto = new PontoGUI();
 				shell.close();
 				ponto.open();
 			}

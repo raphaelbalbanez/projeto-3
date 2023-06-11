@@ -49,7 +49,7 @@ public class ConnectStrateegia {
 	/**
 	 * Create contents of the window.
 	 */
-	protected void createContents() {
+	protected void createContents(){
 		shlStratroom = new Shell();
 		shlStratroom.setBackground(SWTResourceManager.getColor(255, 255, 255));
 		shlStratroom.setSize(500, 280);
@@ -79,6 +79,12 @@ public class ConnectStrateegia {
 				
 				clipboard.dispose();
 				shlStratroom.close();
+				Loading load = new Loading();
+				try {
+					load.open();
+				}catch(Exception ex) {
+					ex.printStackTrace();
+				}
 			}
 		});
 		btnCopy.setImage(SWTResourceManager.getImage("C:\\Users\\RODRIGO\\eclipse-workspace\\projeto-3\\bin\\copy.png"));

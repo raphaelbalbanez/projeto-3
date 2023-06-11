@@ -18,7 +18,7 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.wb.swt.SWTResourceManager;
 
-public class tela_criar_kit1 {
+public class CriarKit1 {
 
 	protected Shell shell;
 	private Text txtLink;
@@ -29,7 +29,7 @@ public class tela_criar_kit1 {
 	 */
 	public static void main(String[] args) {
 		try {
-			tela_criar_kit1 window = new tela_criar_kit1();
+			CriarKit1 window = new CriarKit1();
 			window.open();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -57,7 +57,7 @@ public class tela_criar_kit1 {
 	protected void createContents() {
 		shell = new Shell();
 		shell.setSize(551, 363);
-		shell.setText("SWT Application");
+		shell.setText("Stratroom");
 		
 		Button btnVoltar = new Button(shell, SWT.NONE);
 		btnVoltar.setBounds(10, 10, 94, 27);
@@ -107,7 +107,7 @@ public class tela_criar_kit1 {
 		btnVoltar.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				tela_divergencia divergencia = new tela_divergencia();
+				DivergenciaGUI divergencia = new DivergenciaGUI();
 				shell.close();
 				divergencia.open();
 			}
@@ -118,7 +118,7 @@ public class tela_criar_kit1 {
 			public void widgetSelected(SelectionEvent e) {
 				String link = txtLink.getText();
 		        if (isLinkValido(link)) {
-		            tela_criar_kit2 kit2 = new tela_criar_kit2();
+		            CriarKit2 kit2 = new CriarKit2();
 		            shell.close();
 		            kit2.open();
 		        }

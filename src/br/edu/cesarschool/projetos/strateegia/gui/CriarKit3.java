@@ -11,7 +11,7 @@ import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.wb.swt.SWTResourceManager;
 import org.eclipse.swt.widgets.Text;
 
-public class tela_criar_kit3 {
+public class CriarKit3 {
 
 	protected Shell shell;
 	private Text txtDescricao;
@@ -22,7 +22,7 @@ public class tela_criar_kit3 {
 	 */
 	public static void main(String[] args) {
 		try {
-			tela_criar_kit3 window = new tela_criar_kit3();
+			CriarKit3 window = new CriarKit3();
 			window.open();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -50,7 +50,7 @@ public class tela_criar_kit3 {
 	protected void createContents() {
 		shell = new Shell();
 		shell.setSize(551, 363);
-		shell.setText("SWT Application");
+		shell.setText("Stratroom");
 		
 		Button btnVoltar = new Button(shell, SWT.NONE);
 		btnVoltar.setText("Voltar");
@@ -95,7 +95,7 @@ public class tela_criar_kit3 {
 		btnVoltar.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				tela_divergencia divergencia = new tela_divergencia();
+				DivergenciaGUI divergencia = new DivergenciaGUI();
 				shell.close();
 				divergencia.open();
 			}
@@ -104,7 +104,7 @@ public class tela_criar_kit3 {
 		btnSetaBaixo.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				tela_criar_kit2 kit2 = new tela_criar_kit2();
+				CriarKit2 kit2 = new CriarKit2();
 				shell.close();
 				kit2.open();
 			}
@@ -115,7 +115,7 @@ public class tela_criar_kit3 {
 		    public void widgetSelected(SelectionEvent e) {
 		        String descricao = txtDescricao.getText();
 		        if (!descricao.isEmpty() && descricao.length() <= 1000) {
-		            tela_ponto_criado pontoCriado = new tela_ponto_criado();
+		            PontoCriadoGUI pontoCriado = new PontoCriadoGUI();
 		            shell.close();
 		            pontoCriado.open();
 		        } 
