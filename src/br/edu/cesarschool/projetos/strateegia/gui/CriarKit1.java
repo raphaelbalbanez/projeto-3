@@ -1,9 +1,5 @@
 package br.edu.cesarschool.projetos.strateegia.gui;
 
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Button;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -12,9 +8,14 @@ import java.net.URL;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.MessageBox;
-import org.eclipse.swt.widgets.Combo;
+import org.eclipse.swt.widgets.Monitor;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.wb.swt.SWTResourceManager;
 
@@ -40,23 +41,34 @@ public class CriarKit1 {
 	 * Open the window.
 	 */
 	public void open() {
-		Display display = Display.getDefault();
-		createContents();
-		shell.open();
-		shell.layout();
-		while (!shell.isDisposed()) {
-			if (!display.readAndDispatch()) {
-				display.sleep();
-			}
-		}
+	    Display display = Display.getDefault();
+	    createContents();
+	    
+	    // Center the shell on the screen
+	    Monitor primaryMonitor = display.getPrimaryMonitor();
+	    Rectangle displayBounds = primaryMonitor.getBounds();
+	    Rectangle shellBounds = shell.getBounds();
+	    int x = (displayBounds.width - shellBounds.width) / 2;
+	    int y = (displayBounds.height - shellBounds.height) / 2;
+	    shell.setLocation(x, y);
+	    
+	    shell.open();
+	    shell.layout();
+	    
+	    while (!shell.isDisposed()) {
+	        if (!display.readAndDispatch()) {
+	            display.sleep();
+	        }
+	    }
 	}
+
 
 	/**
 	 * Create contents of the window.
 	 */
 	protected void createContents() {
 		shell = new Shell();
-		shell.setSize(551, 363);
+		shell.setSize(560, 360);
 		shell.setText("Stratroom");
 		
 		Button btnVoltar = new Button(shell, SWT.NONE);

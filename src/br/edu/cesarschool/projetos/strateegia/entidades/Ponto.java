@@ -6,16 +6,23 @@ import br.edu.cesarschool.projetos.classroom.entidades.Atividade;
 import br.edu.cesarschool.projetos.strateegia.util.TipoPonto;
 
 public class Ponto {
+	private String titulo;
 	private String tema;
 	private String assunto;
 	private LocalDateTime dataCriacao;
 	private Atividade atividade;
 	private TipoPonto tipo;
-	public Ponto(String tema, String assunto, LocalDateTime dataCriacao, TipoPonto tipo) {
+	public Ponto(String titulo, String tema, String assunto, TipoPonto tipo) {
 		this.tema = tema;
 		this.assunto = assunto;
-		this.dataCriacao = dataCriacao;
+		this.dataCriacao = LocalDateTime.now();
 		this.tipo = tipo;
+	}
+	public String getTitulo() {
+		return titulo;
+	}
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 	public String getTema() {
 		return tema;

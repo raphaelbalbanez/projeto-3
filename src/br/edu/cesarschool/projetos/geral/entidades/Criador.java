@@ -3,8 +3,8 @@ package br.edu.cesarschool.projetos.geral.entidades;
 import java.util.Arrays;
 
 import br.edu.cesarschool.projetos.classroom.entidades.SalaDeAula;
-import br.edu.cesarschool.projetos.exceptions.ExcecaoJornadaNaoEncontrada;
-import br.edu.cesarschool.projetos.exceptions.ExcecaoSalaNaoEncontrada;
+import br.edu.cesarschool.projetos.exceptions.ExcecaoQuantidadeInsuficiente;
+import br.edu.cesarschool.projetos.exceptions.ExcecaoNaoEncontrada;
 import br.edu.cesarschool.projetos.strateegia.entidades.Jornada;
 
 public class Criador extends Usuario{
@@ -36,18 +36,25 @@ public class Criador extends Usuario{
 	}
 	
 	public Jornada criarJornada(String titulo, String descricao) {
-		Jornada jornada = criarJornada(titulo, descricao, null);
-		return jornada;
+		return criarJornada(titulo, descricao, null);
 	}
 	
 	public Jornada criarJornada(String titulo, String descricao, SalaDeAula salaAnexada) {
 		Jornada jornada = new Jornada(titulo, descricao, this, salaAnexada);
-		Jornada[] temp = Arrays.copyOf(jornadas, jornadas.length + 1);
-		temp[jornadas.length - 1] = jornada;
+		Jornada[] temp;
+		if(jornadas == null) {
+			temp = new Jornada[1];
+		}else{
+			temp = Arrays.copyOf(jornadas, jornadas.length < 1 ? 1 : jornadas.length + 1);
+		}
+		temp[jornadas.length < 1 || jornadas == null ? 0 : jornadas.length - 1] = jornada;
 		setJornadas(temp);
 		return jornada;
 	}
-	public void deletarJornada(Jornada jornada) throws ExcecaoJornadaNaoEncontrada{
+	public void deletarJornada(Jornada jornada) throws ExcecaoNaoEncontrada, ExcecaoQuantidadeInsuficiente{
+		if(jornadas.length < 1) {
+			throw new ExcecaoQuantidadeInsuficiente("Não há Jornadas criadas.");
+		}
 		Jornada[] temp = new Jornada[jornadas.length - 1];
 		boolean found = false;
 		int k = 0;
@@ -61,7 +68,7 @@ public class Criador extends Usuario{
 		}
 		setJornadas(temp);
 		if(found == false) {
-			throw new ExcecaoJornadaNaoEncontrada("Jornada não encontrada");
+			throw new ExcecaoNaoEncontrada("Jornada não encontrada");
 		}
 	}
 	// refatorar para criar e deletar serem responsabilidades de SalaDeAula e de Jornada
@@ -71,13 +78,21 @@ public class Criador extends Usuario{
 		// não faz sentido método estático e abstrato, revisitar...
 	public SalaDeAula criarSalaDeAula(String titulo) {
 		SalaDeAula sala = new SalaDeAula(titulo);
-		SalaDeAula[] temp = Arrays.copyOf(salasDeAula, salasDeAula.length + 1);
-		temp[salasDeAula.length - 1] = sala;
+		SalaDeAula[] temp;
+		if(salasDeAula == null) {
+			temp = new SalaDeAula[1];
+		}else{
+			temp = Arrays.copyOf(salasDeAula, salasDeAula.length < 1 || salasDeAula == null ? 1 : salasDeAula.length + 1);
+		}
+		temp[salasDeAula.length < 1 || salasDeAula == null ? 0 : salasDeAula.length - 1] = sala;
 		setSalasDeAula(temp);
 		return sala;
 	}
 	
-	public void deletarSalaDeAula(SalaDeAula sala) throws ExcecaoSalaNaoEncontrada{
+	public void deletarSalaDeAula(SalaDeAula sala) throws ExcecaoNaoEncontrada, ExcecaoQuantidadeInsuficiente{
+		if(salasDeAula.length < 1) {
+			throw new ExcecaoQuantidadeInsuficiente("Não há Salas de Aula criadas.");
+		}
 		SalaDeAula[] temp = new SalaDeAula[salasDeAula.length - 1];
 		boolean found = false;
 		int k = 0;
@@ -91,7 +106,7 @@ public class Criador extends Usuario{
 		}
 		setSalasDeAula(temp);
 		if(found == false) {
-			throw new ExcecaoSalaNaoEncontrada("Sala de Aula não encontrada");
+			throw new ExcecaoNaoEncontrada("Sala de Aula não encontrada");
 		}
 	}
 }

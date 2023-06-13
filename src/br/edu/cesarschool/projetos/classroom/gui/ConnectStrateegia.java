@@ -13,12 +13,16 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.wb.swt.SWTResourceManager;
 
+import br.edu.cesarschool.projetos.mediators.ClassroomMediator;
+import br.edu.cesarschool.projetos.mediators.CriadorMediator;
+
 public class ConnectStrateegia {
 
 	protected Shell shlStratroom;
 	private Text txtLinkClassroom;
 	private Display display = Display.getDefault();
-
+	private CriadorMediator criadorMediator = CriadorMediator.getInstance();
+	private ClassroomMediator classMediator = ClassroomMediator.getInstance();
 	/**
 	 * Launch the application.
 	 * @param args
@@ -78,6 +82,7 @@ public class ConnectStrateegia {
 				clipboard.setContents(new Object[] {toCopy}, new TextTransfer[] {txtTransfer});
 				
 				clipboard.dispose();
+				classMediator.setClassroomURL(toCopy);
 				shlStratroom.close();
 				Loading load = new Loading();
 				try {

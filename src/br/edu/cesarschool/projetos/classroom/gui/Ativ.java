@@ -1,22 +1,28 @@
 package br.edu.cesarschool.projetos.classroom.gui;
 
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Text;
+import java.time.LocalDateTime;
+
+import javax.swing.JOptionPane;
+
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.wb.swt.SWTResourceManager;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Text;
+import org.eclipse.wb.swt.SWTResourceManager;
+
+import br.edu.cesarschool.projetos.classroom.entidades.Conteudo;
+import br.edu.cesarschool.projetos.mediators.ClassroomMediator;
+import br.edu.cesarschool.projetos.mediators.CriadorMediator;
 
 public class Ativ {
 
 	protected Shell shlStratroom;
-	private Text text;
-	private Text text_1;
+	private Text txtTitulo;
+	private Text txtDescricao;
 	private Label imgAtividade;
 	private Label lblAnexar;
 	private Button btnStrateegia;
@@ -25,6 +31,9 @@ public class Ativ {
 	private Button btnShare;
 	private Button btnLink;
 	private Label lblAtividade;
+	private Label label;
+	private CriadorMediator criadorMediator = CriadorMediator.getInstance();
+	private ClassroomMediator classMediator = ClassroomMediator.getInstance();
 
 	/**
 	 * Launch the application.
@@ -60,66 +69,76 @@ public class Ativ {
 	protected void createContents() {
 		shlStratroom = new Shell();
 		shlStratroom.setBackground(SWTResourceManager.getColor(255, 255, 255));
-		shlStratroom.setSize(560, 360);
+		shlStratroom.setSize(1024, 668);
 		shlStratroom.setText("Stratroom");
 		
-		text = new Text(shlStratroom, SWT.BORDER | SWT.WRAP);
-		text.setBounds(44, 80, 378, 21);
+		txtTitulo = new Text(shlStratroom, SWT.BORDER | SWT.WRAP);
+		txtTitulo.setBounds(44, 113, 388, 25);
 		
 		Label lblDescricao = new Label(shlStratroom, SWT.NONE);
 		lblDescricao.setBackground(SWTResourceManager.getColor(255, 255, 255));
-		lblDescricao.setBounds(44, 120, 55, 15);
+		lblDescricao.setBounds(44, 181, 55, 15);
 		lblDescricao.setText("Descrição");
 		
 		Label lblTitulo = new Label(shlStratroom, SWT.NONE);
 		lblTitulo.setText("Título");
 		lblTitulo.setBackground(SWTResourceManager.getColor(255, 255, 255));
-		lblTitulo.setBounds(45, 59, 55, 15);
+		lblTitulo.setBounds(45, 92, 55, 15);
 		
-		text_1 = new Text(shlStratroom, SWT.BORDER | SWT.WRAP);
-		text_1.setBounds(44, 141, 378, 61);
+		txtDescricao = new Text(shlStratroom, SWT.BORDER | SWT.WRAP);
+		txtDescricao.setBounds(44, 202, 417, 125);
 		
 		imgAtividade = new Label(shlStratroom, SWT.NONE);
 		imgAtividade.setBackground(SWTResourceManager.getColor(255, 255, 255));
 		imgAtividade.setImage(SWTResourceManager.getImage("C:\\Users\\RODRIGO\\eclipse-workspace\\projeto-3\\bin\\atividadePNG.png"));
-		imgAtividade.setBounds(40, 10, 42, 43);
+		imgAtividade.setBounds(40, 28, 42, 43);
 		
 		lblAnexar = new Label(shlStratroom, SWT.NONE);
 		lblAnexar.setBackground(SWTResourceManager.getColor(255, 255, 255));
-		lblAnexar.setBounds(44, 221, 55, 15);
+		lblAnexar.setBounds(44, 488, 55, 15);
 		lblAnexar.setText("Anexar");
 		
 		btnStrateegia = new Button(shlStratroom, SWT.NONE);
 		btnStrateegia.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseDown(MouseEvent e) {
-				ConnectStrateegia connector = new ConnectStrateegia();
-				connector.open();
+				if(txtTitulo.getText() == null || txtTitulo.getText().strip() == "") {
+					JOptionPane.showMessageDialog(null, "Insira um título para a atividade.");
+				}
+				else if(txtDescricao.getText() == null || txtDescricao.getText().strip() == "") {
+					JOptionPane.showMessageDialog(null, "Insira uma descrição para a atividade.");
+				}
+				else{
+					Conteudo conteudo = new Conteudo(txtDescricao.getText(), classMediator.getSalaDeAula());
+					classMediator.adicionarAtividade(txtTitulo.getText(), LocalDateTime.now(), conteudo);
+					ConnectStrateegia connector = new ConnectStrateegia();
+					connector.open();
+				}
 			}
 		});
 		btnStrateegia.setImage(SWTResourceManager.getImage("C:\\Users\\RODRIGO\\eclipse-workspace\\projeto-3\\bin\\strateegia.png"));
-		btnStrateegia.setBounds(69, 252, 64, 43);
+		btnStrateegia.setBounds(103, 514, 64, 43);
 		
 		btnDrive = new Button(shlStratroom, SWT.NONE);
 		btnDrive.setImage(SWTResourceManager.getImage("C:\\Users\\RODRIGO\\eclipse-workspace\\projeto-3\\bin\\drive.png"));
-		btnDrive.setBounds(149, 252, 64, 43);
+		btnDrive.setBounds(260, 514, 64, 43);
 		
 		btnYoutube = new Button(shlStratroom, SWT.NONE);
 		btnYoutube.setImage(SWTResourceManager.getImage("C:\\Users\\RODRIGO\\eclipse-workspace\\projeto-3\\bin\\youtube.png"));
-		btnYoutube.setBounds(236, 252, 64, 43);
+		btnYoutube.setBounds(433, 514, 64, 43);
 		
 		btnShare = new Button(shlStratroom, SWT.NONE);
 		btnShare.setImage(SWTResourceManager.getImage("C:\\Users\\RODRIGO\\eclipse-workspace\\projeto-3\\bin\\share.png"));
-		btnShare.setBounds(322, 252, 64, 43);
+		btnShare.setBounds(609, 514, 64, 43);
 		
 		btnLink = new Button(shlStratroom, SWT.NONE);
 		btnLink.setImage(SWTResourceManager.getImage("C:\\Users\\RODRIGO\\eclipse-workspace\\projeto-3\\bin\\link.png"));
-		btnLink.setBounds(419, 252, 64, 43);
+		btnLink.setBounds(784, 514, 64, 43);
 		
 		lblAtividade = new Label(shlStratroom, SWT.NONE);
 		lblAtividade.setBackground(SWTResourceManager.getColor(255, 255, 255));
 		lblAtividade.setFont(SWTResourceManager.getFont("Segoe UI", 20, SWT.NORMAL));
-		lblAtividade.setBounds(88, 10, 113, 37);
+		lblAtividade.setBounds(88, 28, 113, 37);
 		lblAtividade.setText("Atividade");
 		
 		Button btnBack = new Button(shlStratroom, SWT.NONE);
@@ -131,8 +150,13 @@ public class Ativ {
 				fp.open();
 			}
 		});
-		btnBack.setBounds(10, 5, 18, 25);
+		btnBack.setBounds(10, 23, 18, 25);
 		btnBack.setText("X");
+		
+		label = new Label(shlStratroom, SWT.SEPARATOR | SWT.HORIZONTAL);
+		label.setForeground(SWTResourceManager.getColor(192, 192, 192));
+		label.setBackground(SWTResourceManager.getColor(255, 255, 255));
+		label.setBounds(38, 466, 937, 13);
 
 	}
 }

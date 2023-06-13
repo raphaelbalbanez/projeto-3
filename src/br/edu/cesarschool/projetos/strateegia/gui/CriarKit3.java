@@ -1,21 +1,31 @@
 package br.edu.cesarschool.projetos.strateegia.gui;
 
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.MessageBox;
-import org.eclipse.wb.swt.SWTResourceManager;
+import org.eclipse.swt.widgets.Monitor;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.wb.swt.SWTResourceManager;
+
+import br.edu.cesarschool.projetos.classroom.entidades.SalaDeAula;
+import br.edu.cesarschool.projetos.mediators.ClassroomMediator;
+import br.edu.cesarschool.projetos.mediators.CriadorMediator;
+import br.edu.cesarschool.projetos.mediators.StrateegiaMediator;
+import br.edu.cesarschool.projetos.strateegia.util.TipoPonto;
 
 public class CriarKit3 {
 
 	protected Shell shell;
 	private Text txtDescricao;
-
+	private CriadorMediator criadorMediator = CriadorMediator.getInstance();
+	private ClassroomMediator classMediator = ClassroomMediator.getInstance();
+	private StrateegiaMediator strateegiaMediator = StrateegiaMediator.getInstance();
 	/**
 	 * Launch the application.
 	 * @param args
@@ -33,23 +43,34 @@ public class CriarKit3 {
 	 * Open the window.
 	 */
 	public void open() {
-		Display display = Display.getDefault();
-		createContents();
-		shell.open();
-		shell.layout();
-		while (!shell.isDisposed()) {
-			if (!display.readAndDispatch()) {
-				display.sleep();
-			}
-		}
+	    Display display = Display.getDefault();
+	    createContents();
+	    
+	    // Center the shell on the screen
+	    Monitor primaryMonitor = display.getPrimaryMonitor();
+	    Rectangle displayBounds = primaryMonitor.getBounds();
+	    Rectangle shellBounds = shell.getBounds();
+	    int x = (displayBounds.width - shellBounds.width) / 2;
+	    int y = (displayBounds.height - shellBounds.height) / 2;
+	    shell.setLocation(x, y);
+	    
+	    shell.open();
+	    shell.layout();
+	    
+	    while (!shell.isDisposed()) {
+	        if (!display.readAndDispatch()) {
+	            display.sleep();
+	        }
+	    }
 	}
+
 
 	/**
 	 * Create contents of the window.
 	 */
 	protected void createContents() {
 		shell = new Shell();
-		shell.setSize(551, 363);
+		shell.setSize(560, 360);
 		shell.setText("Stratroom");
 		
 		Button btnVoltar = new Button(shell, SWT.NONE);
@@ -115,7 +136,10 @@ public class CriarKit3 {
 		    public void widgetSelected(SelectionEvent e) {
 		        String descricao = txtDescricao.getText();
 		        if (!descricao.isEmpty() && descricao.length() <= 1000) {
-		            PontoCriadoGUI pontoCriado = new PontoCriadoGUI();
+		        	SalaDeAula sala = classMediator.getSalaDeAula();
+		        	String salaDescricao = sala.getAtividades()[0].getConteudo().getDescricao();
+		        	strateegiaMediator.adicionarPonto(descricao, sala.getTitulo(), salaDescricao, TipoPonto.DIVERGENCIA);		   
+		            PontoCriado pontoCriado = new PontoCriado();
 		            shell.close();
 		            pontoCriado.open();
 		        } 
